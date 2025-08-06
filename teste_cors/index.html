@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Teste CORS</title>
+    </head>
+    <body>
+        <button id="consultar">Consultar</button>
+        <pre></pre>
+        <script>
+
+            function consultar() {
+                fetch("http://localhost:9000/atendimento/consultar")
+                    .then(resposta => resposta.json())
+                    .then(dados => {
+                        let elemento = document.querySelector("pre");
+                        elemento.innerText = JSON.stringify(dados, undefined, 2);
+                    });
+            };
+
+            document.querySelector("button#consultar").addEventListener("click", consultar);
+
+        </script>
+    </body>
+</html>

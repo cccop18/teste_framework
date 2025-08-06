@@ -2,13 +2,34 @@ package br.ufac.sgcmapi.model;
 
 import java.io.Serializable;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Usuario implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, updatable = false)
     private Long id;
+
     private String nomeCompleto;
+
+    @Column(nullable = false, unique = true)
     private String nomeUsuario;
+
     private String senha;
+
+    @Column(nullable = false)
     private boolean ativo = true;
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private EPapel papel;
 
     public Long getId() {

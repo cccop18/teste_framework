@@ -4,14 +4,46 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
+
+@Entity
+@Table(uniqueConstraints = {
+    @UniqueConstraint(columnNames = { "data", "hora", "profissional_id" }),
+    @UniqueConstraint(columnNames = { "data", "hora", "paciente_id" })
+})
 public class Atendimento implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, updatable = false)
     private Long id;
+
+    @Column(nullable = false)
     private LocalDate data;
+
+    @Column(nullable = false)
     private LocalTime hora;
+
+    @ManyToOne(optional = false)
     private Profissional profissional;
+
+    @ManyToOne
     private Convenio convenio;
+
+    @ManyToOne(optional = false)
     private Paciente paciente;
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private EStatus status = EStatus.AGENDADO;
     
     public Long getId() {
