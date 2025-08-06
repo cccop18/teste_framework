@@ -1,0 +1,6 @@
+{
+    "markdownlint.config": {
+        "MD028": false
+    },
+    "java.configuration.updateBuildConfiguration": "automatic"
+}

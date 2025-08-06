@@ -3,18 +3,47 @@ package br.ufac.sgcmapi.model;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Paciente implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, updatable = false)
     private Long id;
+
+    @Column(nullable = false)
     private String nome;
+
     private String email;
+
+    @Column(nullable = false)
     private String telefone;
+
+    @Column(nullable = false)
     private LocalDate dataNascimento;
+
+    @Enumerated(EnumType.STRING)
     private EGrupoSanguineo grupoSanguineo;
+
+    @Column(nullable = false)
+
+    @Enumerated(EnumType.STRING)
     private ESexo sexo;
+    
     private String cep;
+
     private String endereco;
+
     private String cidade;
+
     private String estado;
 
     public Long getId() {
