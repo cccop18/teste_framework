@@ -18,7 +18,7 @@ public class Unidade implements Serializable {
 
     @Column(nullable = false, unique = true)
     private String nome;
-
+    
     private String endereco;
     
     public Long getId() {

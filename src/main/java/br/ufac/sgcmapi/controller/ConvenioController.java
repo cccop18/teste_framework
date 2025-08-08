@@ -13,30 +13,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.ufac.sgcmapi.model.Atendimento;
-import br.ufac.sgcmapi.model.EStatus;
-import br.ufac.sgcmapi.service.AtendimentoService;
+import br.ufac.sgcmapi.model.Convenio;
+import br.ufac.sgcmapi.service.ConvenioService;
 
 @RestController
-@RequestMapping("/atendimento")
-public class AtendimentoController implements ICrudController<Atendimento> {
+@RequestMapping("/convenio")
+public class ConvenioController implements ICrudController<Convenio> {
 
-    private final AtendimentoService servico;
+    private final ConvenioService servico;
 
-    public AtendimentoController(AtendimentoService servico) {
+    public ConvenioController(ConvenioService servico) {
         this.servico = servico;
     }
 
     @Override
     @GetMapping("/consultar")
-    public ResponseEntity<List<Atendimento>> consultar(@RequestParam(required = false) String termoBusca) {
+    public ResponseEntity<List<Convenio>> consultar(@RequestParam(required = false) String termoBusca) {
         var registros = servico.consultar(termoBusca);
         return ResponseEntity.ok(registros);
     }
 
     @Override
     @GetMapping("/consultar/{id}")
-    public ResponseEntity<Atendimento> consultar(@PathVariable Long id) {
+    public ResponseEntity<Convenio> consultar(@PathVariable Long id) {
         var registro = servico.consultar(id);
         if (registro == null) {
             return ResponseEntity.notFound().build();
@@ -46,14 +45,14 @@ public class AtendimentoController implements ICrudController<Atendimento> {
 
     @Override
     @PostMapping("/inserir")
-    public ResponseEntity<Long> inserir(@RequestBody Atendimento objeto) {
+    public ResponseEntity<Long> inserir(@RequestBody Convenio objeto) {
         var registro = servico.salvar(objeto);
         return ResponseEntity.created(null).body(registro.getId());
     }
 
     @Override
     @PutMapping("/atualizar")
-    public ResponseEntity<Void> atualizar(@RequestBody Atendimento objeto) {
+    public ResponseEntity<Void> atualizar(@RequestBody Convenio objeto) {
         servico.salvar(objeto);
         return ResponseEntity.ok().build();
     }
@@ -65,10 +64,10 @@ public class AtendimentoController implements ICrudController<Atendimento> {
         return ResponseEntity.ok().build();
     }
 
-    @PutMapping("/status/{id}")
-    public ResponseEntity<EStatus> atualizarStatus(@PathVariable Long id) {
-        var registro = servico.atualizarStatus(id);
-        return ResponseEntity.ok(registro.getStatus());
+    @GetMapping("/ativos")
+    public ResponseEntity<List<Convenio>> consultarAtivos() {
+        var registros = servico.consultarAtivos();
+        return ResponseEntity.ok(registros);
     }
-
+    
 }

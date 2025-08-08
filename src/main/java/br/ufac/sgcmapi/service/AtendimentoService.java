@@ -1,7 +1,5 @@
 package br.ufac.sgcmapi.service;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -52,14 +50,6 @@ public class AtendimentoService implements ICrudService<Atendimento> {
             registro = this.salvar(registro);
         }
         return registro;
-    }
-
-    public List<LocalTime> consultarHorariosOcupadosPorProfissional(Long profissionalId, LocalDate data) {
-        return repo.findHorasByProfissionalIdAndData(profissionalId, data);
-    }
-
-    public List<LocalTime> consultarHorariosOcupadosPorPaciente(Long pacienteId, LocalDate data) {
-        return repo.findHorasByPacienteIdAndData(pacienteId, data);
     }
     
 }

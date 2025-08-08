@@ -1,7 +1,5 @@
 package br.ufac.sgcmapi.repository;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -23,12 +21,6 @@ public interface AtendimentoRepository extends JpaRepository<Atendimento, Long> 
         OR c.nome LIKE %:termoBusca%
         OR u.nome LIKE %:termoBusca%
     """)
-    public List<Atendimento> consultar(String termoBusca);
-
-    @Query("SELECT a.hora FROM Atendimento a WHERE a.profissional.id = :profissionalId AND a.data = :data")
-    public List<LocalTime> findHorasByProfissionalIdAndData(Long profissionalId, LocalDate data);
-
-    @Query("SELECT a.hora FROM Atendimento a WHERE a.paciente.id = :pacienteId AND a.data = :data")
-    public List<LocalTime> findHorasByPacienteIdAndData(Long pacienteId, LocalDate data);
+    List<Atendimento> consultar(String termoBusca);
     
 }

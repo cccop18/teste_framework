@@ -21,19 +21,19 @@ public class Profissional implements Serializable {
     private String nome;
 
     @Column(nullable = false)
+    private String email;
+
+    @Column(nullable = false)
     private String registroConselho;
+
+    @Column(nullable = false)
+    private String telefone;
 
     @ManyToOne(optional = false)
     private Especialidade especialidade;
 
     @ManyToOne(optional = false)
     private Unidade unidade;
-
-    @Column(nullable = false)
-    private String telefone;
-
-    @Column(nullable = false)
-    private String email;
     
     public Long getId() {
         return id;
@@ -51,12 +51,28 @@ public class Profissional implements Serializable {
         this.nome = nome;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getRegistroConselho() {
         return registroConselho;
     }
 
     public void setRegistroConselho(String registroConselho) {
         this.registroConselho = registroConselho;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
     public Especialidade getEspecialidade() {
@@ -73,22 +89,6 @@ public class Profissional implements Serializable {
 
     public void setUnidade(Unidade unidade) {
         this.unidade = unidade;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
 }
