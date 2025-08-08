@@ -34,10 +34,9 @@ public class Paciente implements Serializable {
     private EGrupoSanguineo grupoSanguineo;
 
     @Column(nullable = false)
-
     @Enumerated(EnumType.STRING)
     private ESexo sexo;
-    
+
     private String cep;
 
     private String endereco;
@@ -45,7 +44,7 @@ public class Paciente implements Serializable {
     private String cidade;
 
     private String estado;
-
+    
     public Long getId() {
         return id;
     }

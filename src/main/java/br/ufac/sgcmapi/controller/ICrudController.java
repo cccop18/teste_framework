@@ -11,5 +11,5 @@ public interface ICrudController<T> {
     public ResponseEntity<Long> inserir(T objeto);
     public ResponseEntity<Void> atualizar(T objeto);
     public ResponseEntity<Void> remover(Long id);
-    
+
 }

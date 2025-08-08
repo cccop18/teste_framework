@@ -20,17 +20,18 @@ public class Usuario implements Serializable {
 
     private String nomeCompleto;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String nomeUsuario;
 
-    private String senha;
-
     @Column(nullable = false)
-    private boolean ativo = true;
+    private String senha;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private EPapel papel;
+
+    @Column(nullable = false)
+    private boolean ativo = true;
 
     public Long getId() {
         return id;
@@ -64,20 +65,20 @@ public class Usuario implements Serializable {
         this.senha = senha;
     }
 
+    public EPapel getPapel() {
+        return papel;
+    }
+
+    public void setPapel(EPapel papel) {
+        this.papel = papel;
+    }
+
     public boolean isAtivo() {
         return ativo;
     }
 
     public void setAtivo(boolean ativo) {
         this.ativo = ativo;
-    }
-
-    public EPapel getPapel() {
-        return papel;
-    }
-    
-    public void setPapel(EPapel papel) {
-        this.papel = papel;
     }
 
 }

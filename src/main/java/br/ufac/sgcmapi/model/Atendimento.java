@@ -17,8 +17,8 @@ import jakarta.persistence.UniqueConstraint;
 
 @Entity
 @Table(uniqueConstraints = {
-    @UniqueConstraint(columnNames = { "data", "hora", "profissional_id" }),
-    @UniqueConstraint(columnNames = { "data", "hora", "paciente_id" })
+    @UniqueConstraint(columnNames =  { "data", "hora", "profissional_id"}),
+    @UniqueConstraint(columnNames =  { "data", "hora", "paciente_id"})
 })
 public class Atendimento implements Serializable {
 
@@ -42,10 +42,10 @@ public class Atendimento implements Serializable {
     @ManyToOne(optional = false)
     private Paciente paciente;
 
-    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private EStatus status = EStatus.AGENDADO;
-    
+
     public Long getId() {
         return id;
     }
@@ -101,5 +101,5 @@ public class Atendimento implements Serializable {
     public void setStatus(EStatus status) {
         this.status = status;
     }
-
+    
 }

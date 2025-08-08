@@ -10,7 +10,7 @@ INSERT INTO `atendimento` VALUES
 INSERT INTO `convenio` VALUES
     (DEFAULT,TRUE,'46.560.030/0001-53','contato@unimedriobranco.com.br','Unimed','Unimed Rio Branco Cooperativa de Trabalho Médico Ltda.','Thayline Figueredo Vaz','(68) 3668-1546'),
     (DEFAULT,TRUE,'29.309.127/0001-79','contato@amil.com.br','Amil','AMIL ASSISTENCIA MEDICA INTERNACIONAL S.A.','Davi Faria da Conceição','(11) 3279-3035'),
-    (DEFAULT,TRUE,'92.693.118/0001-60','contato@bradescosaude.com.br','Bradesco','BRADESCO SAUDE S.A.','Leandra Paes dos Anjos','(21) 2503-0787');
+    (DEFAULT,FALSE,'92.693.118/0001-60','contato@bradescosaude.com.br','Bradesco','BRADESCO SAUDE S.A.','Leandra Paes dos Anjos','(21) 2503-0787');
 
 INSERT INTO `especialidade` VALUES
     (DEFAULT,'Cardiologia'),
@@ -43,6 +43,6 @@ INSERT INTO `unidade` VALUES
 INSERT INTO `usuario` VALUES
     (DEFAULT,TRUE,'Administrador','admin','ADMIN','admin'),
     (DEFAULT,TRUE,'Daniel','daniel','ADMIN','daniel'),
-    (DEFAULT,TRUE,'Teste','teste','ATENDENTE','teste');
+    (DEFAULT,TRUE,'Paulo','paulo','ATENDENTE','paulo');
 
 SET REFERENTIAL_INTEGRITY TRUE;
